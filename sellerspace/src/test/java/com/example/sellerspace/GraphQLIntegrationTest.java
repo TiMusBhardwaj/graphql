@@ -5,6 +5,7 @@ import com.example.sellerspace.model.response.SellerPageableResponse;
 import graphql.GraphQL;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -12,12 +13,21 @@ import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 import org.springframework.graphql.test.tester.WebGraphQlTester;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import javax.sql.DataSource;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Sql({"/testschema.sql", "/testdata.sql"})
+@ActiveProfiles("test")
 public class GraphQLIntegrationTest {
+
+    @Autowired
+    DataSource dataSource;
 
     @Autowired
     private WebTestClient webTestClient;

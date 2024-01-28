@@ -6,6 +6,7 @@ SellerSpace is a Java-based application providing a GraphQL interface to manage 
 ## System Requirements
 
 - Java 17
+- Postgres Database with name `sentryc_interview` 
 
 ## Running the Application
 
@@ -24,6 +25,18 @@ Follow these steps to run the application:
 ## Database Configuration
 
 The application requires a PostgreSQL database. Configure the database connection in `application.properties` for both testing and running the application.
+
+### Intial Data Load
+Intial Data Load  from `src/main/resources/data.sql`
+
+### Intial Schema Load
+Intial schema creation from `src/main/resources/schema.sql`
+
+## Test data 
+Test Data can be generated using file src/main/java/DataInitializer.java
+Manipulate this file and Run your sprngbootApp
+
+
 
 ## GraphQL API
 
